@@ -9,7 +9,7 @@ rmdir('./dist')
 
 module.exports = merge( build , {
   entry: [
-    './styles/themes/index.scss',
+    './styles/index.scss',
     './src/index.js'
   ],
   module: {
@@ -23,11 +23,12 @@ module.exports = merge( build , {
         ]
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           'style-loader',
           'css-loader',
+          'sass-loader',
           {
             loader: 'postcss-loader',
             options: {
