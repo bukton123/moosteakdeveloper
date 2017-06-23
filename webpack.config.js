@@ -8,24 +8,12 @@ const build = NODE_ENV ? require('./config/webpack/prod') : require('./config/we
 rmdir('./dist')
 
 module.exports = merge( build , {
-  devtool: NODE_ENV ? 'eval' : '#eval-source-map',
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
+    './src/theme/scss/index.scss',
     './src/index.js'
   ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.js?$/,
-        loader: 'eslint-loader',
-        exclude: /(node_modules)/,
-        options: {
-          formatter: require("eslint-friendly-formatter"),
-        }
-      },
       {
         test: /\.js?$/,
         exclude: /node_modules/,
@@ -62,14 +50,8 @@ module.exports = merge( build , {
     chunkFilename: path.join('static', 'js/[id].[hash].js')
   },
   devServer: {
-    // contentBase: './dist',
     hot: true,
     inline: false,
     historyApiFallback: true,
-    // proxy: {
-    //   '/api/*': {
-    //     target: 'http://139.59.246.7:3000/'
-    //   }
-    // }
   }
 })
