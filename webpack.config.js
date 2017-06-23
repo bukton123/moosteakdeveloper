@@ -9,7 +9,7 @@ rmdir('./dist')
 
 module.exports = merge( build , {
   entry: [
-    './src/theme/scss/index.scss',
+    './styles/themes/index.scss',
     './src/index.js'
   ],
   module: {
