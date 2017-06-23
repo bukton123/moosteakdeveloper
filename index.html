@@ -2,7 +2,10 @@
 <html>
 <head>
     <title>App</title>
-    <link rel="icon" href="static/images/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+        navigator.serviceWorker.register('static/js/sw.js').then( r => console.log(r))
+    </script>
 </head>
 <body>
     <div id="app"></div>
