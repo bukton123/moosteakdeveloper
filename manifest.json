@@ -1,0 +1,27 @@
+{
+  "name": "Hiewkao",
+  "short_name": "Hiewkao",
+  "start_url": ".",
+  "display": "standalone",
+  ​​"orientation": "portrait-primary",
+  "background_color": "#FFEDB5",
+  "theme_color": "#FFE187",
+  "description": "Hiewkao PWA platform",
+  "icons": [
+    {
+      "src": "image/shelter32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "image/shelter128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "image/shelter512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
