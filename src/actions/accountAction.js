@@ -23,5 +23,5 @@ export default {
   SigeInGoogle,
   SigeInFacebook,
   SignOut,
-  OnAuth
+  isAuth
 }

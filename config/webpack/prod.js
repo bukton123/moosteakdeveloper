@@ -54,6 +54,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'static', to:  'static/'},
+      { from: 'manifest.json', to: 'manifest.json'},
       { from: 'sw.js', to:  'static/js/sw.js'},
       { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},
     ])
