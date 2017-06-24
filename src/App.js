@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Provider } from 'mobx-react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import * as stores from './stores'
-import { requireAuth } from './utils'
+import { requireAuth, isrequireAuth } from './utils'
 import {
   App,
   Signin,
@@ -18,7 +18,7 @@ export default class AppMain extends Component {
             <IndexRoute component={ Dashboard } onEnter={ requireAuth } />
             // <Route path='dashboard' component={ Dashboard }  />
           </Route>
-          <Route path='/signin' component={ Signin } />
+          <Route path='/signin' component={ Signin } onEnter={ isrequireAuth } />
         </Router>
       </Provider>
     )

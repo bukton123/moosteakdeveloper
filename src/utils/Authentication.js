@@ -8,6 +8,15 @@ const requireAuth = (nextState, replace) => {
   }
 }
 
+const isrequireAuth = (nextState, replace) => {
+  if (account.isAuth()) {
+    replace({
+      pathname: '/'
+    })
+  }
+}
+
 export {
-  requireAuth
+  requireAuth,
+  isrequireAuth
 }
