@@ -1,0 +1,134 @@
+.btn-facebook {
+    margin-top: 30%;
+}
+
+.btn-google {
+    margin-top: 20px;
+}
+
+.btn-login {
+    height: 50px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.login {
+    background-image: url("/static/asset/images/header.png");
+    /* Set rules to fill background */
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: 100%;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    // left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.img-logo {
+    margin-top: 20%;
+    height: auto;
+    text-align: center;
+}
+
+.img-size {
+    width: 200px;
+    height: auto;
+}
+@media screen and (min-width: 1025px) {
+    .img-logo {
+        margin-top: 10%;
+        height: auto;
+        text-align: center;
+    }
+
+    .img-size {
+        width: 200px;
+        height: auto;
+    }
+
+    .btn-facebook {
+        margin-top: 10%;
+    }
+}
+@media screen and (min-width: 320px) and (max-width:360px) {
+    .img-logo {
+        margin-top: 20%;
+        height: auto;
+        text-align: center;
+    }
+
+    .img-size {
+        width: 200px;
+        height: auto;
+    }
+
+    .btn-facebook {
+        margin-top: 40%;
+    }
+}
+@media screen and (min-width: 361px) and (max-width:375px) {
+    .img-logo {
+        margin-top: 20%;
+        height: auto;
+        text-align: center;
+    }
+
+    .img-size {
+        width: 220px;
+        height: auto;
+    }
+
+    .btn-facebook {
+        margin-top: 50%;
+    }
+}
+@media screen and (min-width: 376px) and (max-width:414px) {
+    .img-logo {
+        margin-top: 15%;
+        height: auto;
+        text-align: center;
+    }
+
+    .img-size {
+        width: 250px;
+        height: auto;
+    }
+
+    .btn-facebook {
+        margin-top: 50%;
+    }
+}
+@media screen and (min-width: 415px) and (max-width:768px) {
+    .img-logo {
+        margin-top: 25%;
+        height: auto;
+        text-align: center;
+    }
+
+    .img-size {
+        width: 300px;
+        height: auto;
+    }
+
+    .btn-facebook {
+        margin-top: 50%;
+    }
+}
+@media screen and (min-width: 769px) and (max-width:1024px) {
+    .img-logo {
+        margin-top: 15%;
+        height: auto;
+        text-align: center;
+    }
+
+    .img-size {
+        width: 400px;
+        height: auto;
+    }
+
+    .btn-facebook {
+        margin-top: 50%;
+    }
+}

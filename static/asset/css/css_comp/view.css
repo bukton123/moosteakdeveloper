@@ -1,0 +1,26 @@
+.row {
+    margin-top: 20px;
+}
+
+hr.style3 {
+    border-top: 1.5px dashed #5D6D7E;
+}
+
+.btn-edit1 {
+    width: 180px;
+    margin: auto;
+    margin-bottom: 8px;
+    border: 1px solid #5D6D7E;
+    background-color: white;
+    text-transform: capitalize;
+    border-radius: 0;
+}
+
+.test-success {
+  font-weight: 400;
+  color: #60AD00;
+}
+
+.test-fail {
+  color: red;
+}
