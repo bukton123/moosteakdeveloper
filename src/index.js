@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import accountAction from './actions/accountAction'
 
 import firebase from 'firebase'
 import firebaseConfig  from '../config/firebase'
 firebase.initializeApp(firebaseConfig)
+accountAction.registerOauthEvent()
 
 import App from './App'
 

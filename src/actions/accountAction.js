@@ -1,27 +1,35 @@
 import firebase from 'firebase'
 import { browserHistory } from 'react-router'
+import { defaultStore } from '../stores'
 
 const SigeInGoogle = () => {
-  return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
 }
 
 const SigeInFacebook = () => {
-  return firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider())
+  firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider())
 }
 
 const SignOut = () => {
-  localStorage.removeItem('auth')
   firebase.auth().signOut()
-  browserHistory.push('/')
 }
 
-const isAuth = () => {
-  return (localStorage.auth) ? true : false
+const registerOauthEvent = () => {
+  firebase.auth().onAuthStateChanged(user => {
+    const isAuth = !!user
+    defaultStore.setAuth(isAuth)
+    browserHistory.push(isAuth ? '/' : '/signin')
+  })
 }
+
+window.bh = browserHistory
 
 export default {
   SigeInGoogle,
   SigeInFacebook,
   SignOut,
-  isAuth
+  isAuth,
+  registerOauthEvent
 }
+
+
