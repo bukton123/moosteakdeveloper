@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import { browserHistory } from 'react-router'
 
 const SigeInGoogle = () => {
   return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
@@ -9,14 +10,13 @@ const SigeInFacebook = () => {
 }
 
 const SignOut = () => {
+  localStorage.removeItem('auth')
   firebase.auth().signOut()
+  browserHistory.push('/')
 }
 
 const isAuth = () => {
-  let validate = false
-  firebase.auth().onAuthStateChanged(user => validate = (user === '' || user === null))
-
-  return validate
+  return (localStorage.auth) ? true : false
 }
 
 export default {
