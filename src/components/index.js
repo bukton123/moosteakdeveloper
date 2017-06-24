@@ -30,9 +30,13 @@ const Dashboard = asyncComponent(() =>
 const Signin = asyncComponent(() =>
   System.import('./account/Signin').then(module => module.default)
 )
+const InitScreen = asyncComponent(() =>
+  System.import('./InitScreen').then(module => module.default)
+)
 
 export {
   App,
   Signin,
-  Dashboard
+  Dashboard,
+  InitScreen
 }

@@ -18,7 +18,7 @@ const registerOauthEvent = () => {
   firebase.auth().onAuthStateChanged(user => {
     const isAuth = !!user
     defaultStore.setAuth(isAuth)
-    browserHistory.push(isAuth ? '/' : '/signin')
+    browserHistory.push(isAuth ? '/dashboard' : '/signin')
   })
 }
 
@@ -28,7 +28,6 @@ export default {
   SigeInGoogle,
   SigeInFacebook,
   SignOut,
-  isAuth,
   registerOauthEvent
 }
 
