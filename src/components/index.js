@@ -35,14 +35,9 @@ const InitScreen = asyncComponent(() =>
   System.import('./InitScreen').then(module => module.default)
 )
 
-const Setting = asyncComponent(() =>
-  System.import('./setting').then(module => module.default)
-)
-
 export {
   App,
   Signin,
   Dashboard,
-  InitScreen,
-  Setting
+  InitScreen
 }
