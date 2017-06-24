@@ -32,19 +32,45 @@ const setTokenNoti = () => {
   })
 }
 
+// const getUser = () => {
+//   return new Promise((resolve, reject) => {
+//     firebase.auth().onAuthStateChanged((user) => {
+//       if (user) {
+//         firebase.database().ref(`users/${user.uid}`).once('value', (snapshot) => {
+//           defaultStore.setProfile(snapshot.val())
+//         })
+//         return
+//       }
+//     })
+//   })
+// }
+
 const getUser = () => {
   return new Promise((resolve, reject) => {
-    const cancel = firebase.auth().onAuthStateChanged((user) => {
-      cancel()
+    const cancle = firebase.auth().onAuthStateChanged((user) => {
+      cancle()
       if (user) {
         firebase.database().ref(`users/${user.uid}`).once('value', (snapshot) => {
           resolve(snapshot.val())
         })
         return
-      }
-      reject()
+      } else reject()
     })
   })
+}
+
+const updateProfile = (profile) => {
+  firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.database().ref(`users/${user.uid}`).update({
+          name: profile.name,
+          email: profile.email,
+          photo: profile.photo
+        })
+        return
+      }
+    })
+  
 }
 
 const registerAccount = () => {
@@ -72,7 +98,8 @@ export default {
   SignOut,
   registerOauthEvent,
   setTokenNoti,
-  getUser
+  getUser,
+  updateProfile
 }
 
 

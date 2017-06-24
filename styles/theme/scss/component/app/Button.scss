@@ -39,3 +39,6 @@
 .btn-new-danger-view {
   @include button-style-flat(#D34945, #D34945, #FFF, #FFF, #D34945)
 }
+.btn-new-warning-view {
+  @include button-style-flat(#F59723, #F59723, #FFF, #FFF, #F59723)
+}

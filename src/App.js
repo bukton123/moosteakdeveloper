@@ -7,7 +7,8 @@ import {
   App,
   Signin,
   Dashboard,
-  InitScreen
+  InitScreen,
+  Profile
 } from './components'
 
 export default class AppMain extends Component {
@@ -18,6 +19,7 @@ export default class AppMain extends Component {
           <Route path='/' component={ InitScreen }/>
           <Route path='/dashboard' component={ App }>
             <IndexRoute component={ Dashboard } onEnter={ requireAuth }/>
+            <Route path='profile' component={ Profile } onEnter={ requireAuth } />
           </Route>
           <Route path='/signin' component={ Signin } onEnter={ isrequireAuth }/>
         </Router>

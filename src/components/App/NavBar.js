@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import account from '../../actions/accountAction'
 
 class Navbar extends Component{
@@ -11,8 +12,8 @@ class Navbar extends Component{
                 <img src='/static/asset/images/HiewKao-logo-w-128.png' alt='picture' />
             </div>
             <div className="col-xs-9 text-right header-menu">
-                <a href="javascript:;"><i className='fa fa-bell' /><span class="badge">5</span></a>
-                <a href="javascript:;" onClick={account.SignOut} ><i className='fa fa-user-circle' /></a>
+                <a href="javascript:;"><i className='fa fa-bell' /><span>5</span></a>
+                <Link to='dashboard/profile' ><i className='fa fa-user-circle' /></Link>
             </div>
         </header>           
       </div>

@@ -17,7 +17,7 @@ body {
 }
 
 .content-menu {
-  background: #FFF;
+  // background: #FFF;
 }
 
 .content-box hr {
@@ -35,6 +35,7 @@ body {
   width: 100%;
   display: block;
   height: 200px;
+  margin-bottom: 20px;
   background: #FFF;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
 }
@@ -47,4 +48,12 @@ body {
 
 .content-box .content-container {
   width: 100%;
+}
+
+.profile-box {
+  margin-top: 30px;
+  // width: 100%;
+  display: block;
+  background: #FFF;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
 }

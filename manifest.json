@@ -4,7 +4,7 @@
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FFEDB5",
+  "background_color": "#FFFFFF",
   "theme_color": "#FFFFFF",
   "description": "Hiewkao PWA platform",
   "gcm_sender_id": "103953800507",

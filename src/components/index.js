@@ -27,6 +27,7 @@ import App from './App'
 import Dashboard from './dashboard'
 import Signin from './account/Signin'
 import InitScreen from './InitScreen'
+import Profile from './Profile'
 // const Dashboard = asyncComponent(() =>
 //   System.import('./dashboard').then(module => module.default)
 // )
@@ -42,5 +43,6 @@ export {
   App,
   Signin,
   Dashboard,
-  InitScreen
+  InitScreen,
+  Profile
 }
