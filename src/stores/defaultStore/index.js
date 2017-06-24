@@ -1,16 +1,14 @@
-import { observable } from 'mobx'
+import { observable, computed } from 'mobx'
 
 class DefaultStore {
-  @observable timer = 0
+  @observable auth = false
 
-  constructor () {
-    setInterval(() => {
-      this.timer += 1
-    }, 1000)
+  setAuth (auth) {
+    this.auth = !!auth
   }
 
-  resetTimer () {
-    this.timer = 0
+  @computed get isAuth () {
+    return this.auth
   }
 }
 

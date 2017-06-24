@@ -1,7 +1,7 @@
-import account from '../actions/accountAction'
+import defaultStore from '../stores/defaultStore'
 
 const requireAuth = (nextState, replace) => {
-  if (!account.isAuth()) {
+  if (!defaultStore.isAuth) {
     replace({
       pathname: '/signin'
     })
@@ -9,7 +9,7 @@ const requireAuth = (nextState, replace) => {
 }
 
 const isrequireAuth = (nextState, replace) => {
-  if (account.isAuth()) {
+  if (defaultStore.isAuth) {
     replace({
       pathname: '/'
     })

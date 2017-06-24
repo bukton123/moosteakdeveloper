@@ -6,7 +6,9 @@ import { requireAuth, isrequireAuth } from './utils'
 import {
   App,
   Signin,
-  Dashboard
+  Dashboard,
+  InitScreen,
+  Setting
 } from './components'
 
 export default class AppMain extends Component {
@@ -14,11 +16,12 @@ export default class AppMain extends Component {
     return (
       <Provider { ...stores }>
         <Router key={ Math.random() } history={ browserHistory }>
-          <Route path='/' component={ App } >
-            <IndexRoute component={ Dashboard } onEnter={ requireAuth } />
-            // <Route path='dashboard' component={ Dashboard }  />
+          <Route path='/' component={ InitScreen }/>
+          <Route path='/dashboard' component={ App }>
+            <IndexRoute component={ Dashboard } onEnter={ requireAuth }/>
+            <Route path='setting' component={ Setting } onEnter={ requireAuth } />
           </Route>
-          <Route path='/signin' component={ Signin } onEnter={ isrequireAuth } />
+          <Route path='/signin' component={ Signin } onEnter={ isrequireAuth }/>
         </Router>
       </Provider>
     )
