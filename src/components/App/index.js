@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import account from '../../actions/accountAction'
+import Navbar from './NavBar'
 
 export default class App extends Component {
   render () {
     return (
       <div>
-        <button onClick={account.SignOut} >logout</button>
-        {this.props.children}
+        <Navbar />
+        <div className='top-content'>
+          {this.props.children}
+        </div>
+
       </div>
     )
   }

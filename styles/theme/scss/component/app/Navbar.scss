@@ -1,0 +1,36 @@
+.container .logo{
+  padding: 10px;
+}
+.navbar, .dropdown-menu{
+background:#F59723;
+
+}
+
+.nav>li>a:focus, .nav>li>a:hover,.nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+  background-color: #fff;
+  color: #F59723;
+}
+.navbar a, .dropdown-menu>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .navbar-toggle{
+ background-color: #F59723;
+  color: #fff;
+
+}
+.dropdown-menu{
+      -webkit-box-shadow: none;
+    box-shadow:none;
+}
+
+
+.navbar-toggle .icon-bar{
+    color: #fff;
+    background: #fff;
+}
+.menu{
+  margin-left: 10px;
+}
+.logo{
+  margin-left: 0px;
+}
+.margin-right{
+  margin-right: 10px;
+}
