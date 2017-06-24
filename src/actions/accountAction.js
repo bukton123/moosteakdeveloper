@@ -22,8 +22,6 @@ const registerOauthEvent = () => {
   })
 }
 
-window.bh = browserHistory
-
 export default {
   SigeInGoogle,
   SigeInFacebook,
