@@ -12,6 +12,12 @@ module.exports = merge( build , {
     './styles/index.scss',
     './src/index.js'
   ],
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
+  ],
   module: {
     rules: [
       {
