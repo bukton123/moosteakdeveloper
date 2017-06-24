@@ -27,7 +27,11 @@ import App from './App'
 // const Dashboard = asyncComponent(() =>
 //   System.import('./Dashboard').then(module => module.default)
 // )
+const Signin = asyncComponent(() =>
+  System.import('./account/Signin').then(module => module.default)
+)
 
 export {
-  App
+  App,
+  Signin
 }

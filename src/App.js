@@ -5,11 +5,9 @@ import * as stores from './stores'
 import { requireAuth } from './utils'
 import {
   App,
+  Signin,
   Dashboard
 } from './components'
-function test() {
-  console.log(0)
-}
 
 export default class AppMain extends Component {
   render () {
@@ -17,9 +15,10 @@ export default class AppMain extends Component {
       <Provider { ...stores }>
         <Router key={ Math.random() } history={ browserHistory }>
           <Route path='/' component={ App } >
-            <IndexRoute component={ Dashboard } onEnter={requireAuth} />
+            <IndexRoute component={ Dashboard } onEnter={ requireAuth } />
             <Route path='dashboard' component={ Dashboard } />
           </Route>
+          <Route path='/signin' component={ Signin } />
         </Router>
       </Provider>
     )
