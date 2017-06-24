@@ -23,22 +23,24 @@ class Signin extends Component {
 
   render () {
     return (
-        <div>
+        <div className="login">
             <Grid>
                 <Row>
-                    <Image src="" rounded />
+                    <Col xs={12} className="img-logo">
+                        <Image className="img-size" src="../../static/asset/images/384.png" rounded />
+                    </Col>
                 </Row>
                 <Row>
-                    <div style={{marginTop:'30%'}}>
-                        <Col xs={4} xsOffset={4}>
-                            <Button style={{height: '50px'}} block bsStyle="primary" onClick={this.signInFacebook}>Login with Facebook</Button>
+                    <div className="btn-facebook">
+                        <Col sm={12}>
+                            <Button className="btn-login" block bsStyle="primary" onClick={this.signInFacebook}>Login with Facebook</Button>
                         </Col>
                     </div>
                 </Row>
                 <Row>
-                    <Col xs={4} xsOffset={4}>
-                        <div style={{marginTop:'20px'}}>
-                            <Button style={{height: '50px'}} block bsStyle="danger"  onClick={this.signInGoogle} >Login with Google</Button>
+                    <Col sm={12}>
+                        <div className="btn-google">
+                            <Button className="btn-login" block bsStyle="danger"  onClick={this.signInGoogle} >Login with Google</Button>
                         </div>
                     </Col>
                 </Row>
