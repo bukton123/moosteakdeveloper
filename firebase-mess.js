@@ -37,7 +37,7 @@ messaging.setBackgroundMessageHandler((payload) => {
     //   {action: 'cancel', title: '👎 Not coming'}
     // ],
     // For additional data to be sent to event listeners, needs to be set in this data {}
-    data: {confirm: data.confirm, decline: data.decline}
+    // data: {confirm: data.confirm, decline: data.decline}
   };
 
   return self.registration.showNotification(notificationTitle, notificationOptions);
