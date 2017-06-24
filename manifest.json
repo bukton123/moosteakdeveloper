@@ -3,7 +3,7 @@
   "short_name": "Hiew Kao",
   "start_url": "/index.html",
   "display": "standalone",
-  ​​"orientation": "portrait-primary",
+  "orientation": "portrait-primary",
   "background_color": "#FFEDB5",
   "theme_color": "#FFE187",
   "description": "Hiewkao PWA platform",

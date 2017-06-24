@@ -1,5 +1,9 @@
-import { requireAuth } from './Authentication'
+import {
+  requireAuth,
+  isrequireAuth
+ } from './Authentication'
 
 export {
-  requireAuth
+  requireAuth,
+  isrequireAuth
 } 
