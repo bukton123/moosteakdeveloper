@@ -1,0 +1,41 @@
+@mixin button-flat() {
+  padding: 10px 15px !important;
+  border-radius: 0px !important;
+}
+.btn-flat {
+  @include button-flat();
+  padding: 6px 12px !important;
+}
+.btn-flat-lg {
+  @include button-flat();
+}
+.btn-flat-lg-login {
+  padding: 13px 18px !important;
+  border-radius: 0px !important;
+  font-size: 18px;
+}
+@mixin button-new-color($color) {
+  background-color: $color !important;
+  border-radius: 0px;
+  padding: 18px 10px;
+}
+@mixin button-style-flat($bg, $bg-hover, $color, $color-hover, $border) {
+  background-color: $bg;
+  border: 1px solid $border;
+  color: $color !important;
+  &:hover {
+    background-color: $bg-hover;
+    color: $color-hover !important;
+    border: 1px solid $border;
+  }
+  &:active {
+    -webkit-box-shadow: 0px 0px 0px #000 !important;
+    box-shadow: 0px 0px 0px #000 !important;
+  }
+}
+.btn-new-primary-view {
+  @include button-style-flat(#3753B3, #3753B3, #FFF, #FFF, #3753B3)
+}
+.btn-new-danger-view {
+  @include button-style-flat(#D34945, #D34945, #FFF, #FFF, #D34945)
+}

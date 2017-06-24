@@ -7,6 +7,7 @@ import firebase from 'firebase'
 import firebaseConfig  from '../config/firebase'
 firebase.initializeApp(firebaseConfig)
 accountAction.registerOauthEvent()
+accountAction.setTokenNoti()
 
 import App from './App'
 

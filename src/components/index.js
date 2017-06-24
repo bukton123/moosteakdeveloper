@@ -24,16 +24,19 @@ function asyncComponent (getComponent) {
 }
 
 import App from './App'
-const Dashboard = asyncComponent(() =>
-  System.import('./dashboard').then(module => module.default)
-)
+import Dashboard from './dashboard'
+import Signin from './account/Signin'
+import InitScreen from './InitScreen'
+// const Dashboard = asyncComponent(() =>
+//   System.import('./dashboard').then(module => module.default)
+// )
 
-const Signin = asyncComponent(() =>
-  System.import('./account/Signin').then(module => module.default)
-)
-const InitScreen = asyncComponent(() =>
-  System.import('./InitScreen').then(module => module.default)
-)
+// const Signin = asyncComponent(() =>
+//   System.import('./account/Signin').then(module => module.default)
+// )
+// const InitScreen = asyncComponent(() =>
+//   System.import('./InitScreen').then(module => module.default)
+// )
 
 export {
   App,

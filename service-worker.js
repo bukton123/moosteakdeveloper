@@ -1,5 +1,4 @@
 importScripts('/static/js/workbox-sw.prod.v1.0.1.js')
-importScripts('/manifest.json')
 const workboxSW  = new WorkboxSW()
 const networkFirst = workboxSW.strategies.networkFirst()
 
@@ -10,6 +9,9 @@ workboxSW.precache([
     revision: 'sdfsdfsdfsdf',
   }, {
     url: '/manifest.json',
+    revision: 'acdsdsdfsdfsdfsd23',
+  }, {
+    url: '/static/asset/plugin/font-awesome/css/font-awesome.min.css',
     revision: 'acdsdsdfsdfsdfsd23',
   }
 ]);

@@ -1,3 +1,50 @@
-.top-content{
-  margin-top: 60px;
+.top-content {
+  margin: 10px 20px;
+}
+
+@media (max-width: 450px) {
+  .top-content {
+    margin: 10px 5px;
+  }
+}
+
+* {
+  font-family: 'Kanit', sans-serif;
+}
+
+body {
+  background: #eaeaea;
+}
+
+.content-menu {
+  background: #FFF;
+}
+
+.content-box hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.content-box p {
+  margin: 5px 10px 5px;
+}
+
+.content-box {
+  width: 100%;
+  display: block;
+  height: 200px;
+  background: #FFF;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+}
+.content-box .content-header {
+  padding: 15px 10px;
+  font-size: 20px;
+  width: 100%;
+  background: rgba(211, 211, 211, 0.31);
+}
+
+.content-box .content-container {
+  width: 100%;
 }

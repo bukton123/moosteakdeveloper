@@ -4,11 +4,40 @@ class Dashboard extends Component {
     render () {
       return (
         <div>
-          <h1 className='bg-color'>Dashboard</h1>
-          <div className='icon-warning'>
-            <i className='fa fa-user' />
+          <h2>สั่งอาหาร</h2>
+          <div className='content-menu'>
+
+          <div className="content-box">
+            <div className="content-header">
+              <span>รายการที่ #1</span>
             </div>
-          <img src='/static/asset/images/banana.png' alt='picture'/>
+            <div className='content-container'>
+              <div>
+              </div>
+
+              <hr/>
+              <p>จำนวนเงิน 5000 บาท</p>
+            </div>
+          </div>
+
+          <br/>
+          <br/>
+          <br/>
+
+          <div className="search">
+  
+    <div className="field">
+
+      <input type="text" className="input-search" id="input-search" name="input-search" required />
+      <label htmlFor="input-search">Search</label>
+
+    </div>
+
+  </div>
+
+
+          
+          </div>
         </div>
       )
     }

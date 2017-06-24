@@ -5,7 +5,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#FFEDB5",
-  "theme_color": "#FFE187",
+  "theme_color": "#FFFFFF",
   "description": "Hiewkao PWA platform",
   "gcm_sender_id": "103953800507",
   "icons": [
