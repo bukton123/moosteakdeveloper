@@ -9,6 +9,7 @@ export default class App extends Component {
         <div className='top-content'>
           {this.props.children}
         </div>
+
       </div>
     )
   }

@@ -16,7 +16,7 @@ class Navbar extends Component{
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                             </button>
-                            <a href="#" className='logo'><img src='/static/asset/images/HiewKao-logo-web-128.png' alt='picture' /></a>
+                            <a href="#" className='logo'><img src='/static/asset/images/HiewKao-logo-w-128.png' alt='picture' /></a>
                             
                         </div>
                         <div id="navbar" className="navbar-collapse collapse">
