@@ -1,0 +1,15 @@
+footer {
+    bottom: 0;
+    background-color: #16428C;
+}
+
+.container-footer {
+    color: white;
+    padding: 10px;
+}
+
+.container-footer>p {
+    display: inline;
+    float: right;
+    margin-top: 10px;
+}

@@ -1,0 +1,94 @@
+body {
+    font-family: inherit;
+    background-color: white;
+}
+html {
+  min-height: 100%;
+  position: relative;
+}
+header {
+  color: #425262;
+  background-color: #E5E5E5;
+  padding-bottom: 30px;
+}
+.footer {
+  padding: 1rem;
+  height: 6em;
+  color: white;
+  background-color: #425262;
+  font-size: 12px;
+  bottom: 0;
+  position: absolute;
+}
+.footer {
+  height: 6em;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+}
+.relative {
+    position: relative;
+    height: 100px;
+}
+
+.absolute {
+    position: absolute;
+    bottom: 0px;
+    padding-left: 2em;
+}
+.absolute-center {
+    bottom: 0px;
+    padding-left: 2em;
+}
+
+.btn-edit {
+    padding: 10px;
+    margin-top: 0px;
+    border: 1px solid #425262;
+    background-color: white;
+    text-transform: capitalize;
+    border-radius: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.a-style>a {
+    color: #425262;
+    padding: 3px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar.navbar-inverse {
+    background-color: #374A5D;
+    color: #fff;
+}
+.digio-font1 {
+  font-size: 30px
+}
+.digio-font2 {
+  font-size: 25px
+}
+@media (max-width: 991px) {
+  .absolute-center {
+    margin-top: 18px;
+    position: none;
+  }
+  .digio-font1 {
+    font-size: 24px
+  }
+  .digio-font2 {
+    font-size: 18px
+  }
+}
+
+@media (min-width: 992px) {
+  .absolute-center {
+      /*position: absolute;*/
+      margin-top: 15px;
+  }
+}
