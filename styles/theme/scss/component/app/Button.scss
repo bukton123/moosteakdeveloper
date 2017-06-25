@@ -42,3 +42,6 @@
 .btn-new-warning-view {
   @include button-style-flat(#F59723, #F59723, #FFF, #FFF, #F59723)
 }
+.btn-new-green-view {
+  @include button-style-flat(#01C78A, #01C78A, #FFF, #FFF, #01C78A)
+}

@@ -13,7 +13,7 @@ class Navbar extends Component{
             </div>
             <div className="col-xs-9 text-right header-menu">
                 <a href="javascript:;"><i className='fa fa-bell' /><span>5</span></a>
-                <Link to='dashboard/order' ><i className='fa fa-user-circle' /></Link>
+                <Link to='dashboard/profile' ><i className='fa fa-user-circle' /></Link>
             </div>
         </header>           
       </div>

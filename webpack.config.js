@@ -52,8 +52,9 @@ module.exports = merge( build , {
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
+    // filename: path.join('static', 'js/[name].js'),
     filename: path.join('static', 'js/[name].[hash].js'),
-    chunkFilename: path.join('static', 'js/[id].[hash].js')
+    // chunkFilename: path.join('static', 'js/[id].[hash].js')
   },
   devServer: {
     hot: true,

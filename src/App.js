@@ -19,12 +19,10 @@ export default class AppMain extends Component {
         <Router key={ Math.random() } history={ browserHistory }>
           <Route path='/' component={ InitScreen }/>
           <Route path='/dashboard' component={ App }>
-            <IndexRoute component={ Dashboard } onEnter={ requireAuth }/>
             <IndexRoute component={ Order } onEnter={ requireAuth }/>
             <Route path='profile' component={ Profile } onEnter={ requireAuth } />
           </Route>
           <Route path='/signin' component={ Signin } onEnter={ isrequireAuth }/>
-          <Route path='/order' component={ Order } onEnter={ requireAuth }/>
         </Router>
       </Provider>
     )

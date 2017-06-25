@@ -10,49 +10,23 @@
     <link rel="icon" href="/static/asset/images/128.png">
     <link href="https://fonts.googleapis.com/css?family=Kanit:300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
     <link rel="stylesheet" type="text/css" href="/static/asset/plugin/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/asset/plugin/alert/sweetalert.css">
 </head>
 <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
     <div id="app"></div>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js"></script>
+    <script src="/firebase-noit.js"></script>
+    <script src="/firebase-mess.js"></script>
     <script>
-        if('serviceWorker' in navigator) {
-            var config = {
-                messagingSenderId: "85465025350"
-            };
-            firebase.initializeApp(config);
-            var messaging = firebase.messaging();
-
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).then((registration) => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    messaging.useServiceWorker(registration);
-                })
-                .then(() => {
-                    return messaging.requestPermission();
-                })
-                .then(() => {
-                    return messaging.getToken();
-                })
-                .then((token) => {
-                    localStorage.setItem('noti',token)
-                })
-                .catch((err) => {
-                    console.log('ServiceWorker registration notification failed: ', err);
-                });
-
-                navigator.serviceWorker.ready.then(function(registration) {
-                    console.log('Service Worker Ready');
-                });
-            })
-        }
+        navigator.serviceWorker.register('/service-worker.js').then(r => console.log(r))
     </script>
-    <!--<script src="/service-worker.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>-->
     <!-- built files will be auto injected -->
 </body>
 </html>

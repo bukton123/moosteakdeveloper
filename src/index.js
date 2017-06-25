@@ -11,6 +11,7 @@ accountAction.setTokenNoti()
 
 import App from './App'
 
+
 const render = Component => {
   ReactDOM.render(
     <AppContainer>

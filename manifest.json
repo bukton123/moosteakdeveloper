@@ -39,5 +39,11 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.moosteakdeveloper.apps.hiewjung"
+    }
   ]
 }
