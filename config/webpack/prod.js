@@ -53,11 +53,11 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'static', to:  'static/'},
-      { from: 'firebase-mess.js', to: 'firebase-mess.js'},
-      { from: 'firebase-noit.js', to: 'firebase-noit.js'},
+      // { from: 'firebase-mess.js', to: 'firebase-mess.js'},
+      // { from: 'firebase-noit.js', to: 'firebase-noit.js'},
       { from: 'manifest.json', to: 'manifest.json'},
-      { from: 'service-worker.js', to:  'static/js/service-worker.js'},
-      { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},
+      { from: 'service-worker.js', to:  'service-worker.js'},
+      // { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},
     ])
   ],
 }

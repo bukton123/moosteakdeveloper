@@ -9,8 +9,32 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 // Installs service worker
-self.addEventListener('install', (event) => {
+self.addEventListener('install', (e) => {
   console.log('Service worker installed');
+  var timeStamp = Date.now();
+  e.waitUntil(
+    caches.open('moosteakdeveloper').then(cache => {
+      return cache.addAll([
+        `/`,
+        `/index.html?timestamp=${timeStamp}`,
+        `/manifest.json?timestamp=${timeStamp}`,
+        `/static/icon/32.png?timestamp=${timeStamp}`,
+        `/static/icon/64.png?timestamp=${timeStamp}`,
+        `/static/icon/128.png?timestamp=${timeStamp}`,
+        `/static/icon/192.png?timestamp=${timeStamp}`,
+        `/static/icon/384.png?timestamp=${timeStamp}`,
+        `/static/icon/512.png?timestamp=${timeStamp}`,
+        `/static/asset/plugin/font-awesome/css/font-awesome.min.css?timestamp=${timeStamp}`,
+        `/static/asset/plugin/alert/sweetalert.css?timestamp=${timeStamp}`,
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
+        'https://fonts.googleapis.com/css?family=Kanit:300,400,500,600,700',
+        'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+      ])
+      .then(() => self.skipWaiting());
+    })
+  )
 });
 
 self.addEventListener('notificationclick', (event) => {
@@ -30,15 +54,21 @@ messaging.setBackgroundMessageHandler((payload) => {
   const notificationTitle = data.title;
   const notificationOptions = {
     body: data.body,
-    // icon: '/static/images/5/icons/android-icon-96x96.png',
     icon: '/static/icon/128.png',
     // actions: [
     //   {action: 'confirmAttendance', title: '👍 Confirm attendance'},
     //   {action: 'cancel', title: '👎 Not coming'}
     // ],
-    // For additional data to be sent to event listeners, needs to be set in this data {}
     // data: {confirm: data.confirm, decline: data.decline}
   };
 
   return self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request, {ignoreSearch:true}).then(response => {
+      return response || fetch(event.request);
+    })
+  );
 });

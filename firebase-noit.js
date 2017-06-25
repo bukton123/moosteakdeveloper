@@ -1,4 +1,4 @@
-// TODO: fill in firebase config information
+// // TODO: fill in firebase config information
 var config = {
   messagingSenderId: "85465025350"
 };
