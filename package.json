@@ -4,11 +4,14 @@
   "description": "pwa react food",
   "scripts": {
     "build": "SET NODE_ENV=production & webpack -p --progress --colors",
-    "start": "SET NODE_ENV=development & webpack-dev-server --progress --colors"
+    "start": "SET NODE_ENV=development & webpack-dev-server --hot --history-api-fallback --progress --colors"
   },
   "babel": {
     "presets": [
-      "es2015",
+      [
+        "es2015",
+        { "modules": false }
+      ],
       "react",
       "stage-2"
     ],

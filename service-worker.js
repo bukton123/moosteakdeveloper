@@ -5,7 +5,7 @@ importScripts('https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js')
 const workboxSW  = new WorkboxSW()
 const networkFirst = workboxSW.strategies.networkFirst()
 var config = {
-  messagingSenderId: ""
+  messagingSenderId: "85465025350"
 };
 
 firebase.initializeApp(config);
@@ -21,14 +21,14 @@ workboxSW.precache([
     url: '/manifest.json',
     revision: 'fdg133rt1ertsdf35rer',
   },
-  {
-    url: '/static/js/main.f36ca39047bebbb4d9f0.js',
-    revision: '2ttfh2k4uyxzjerersdweef',
-  },
-  {
-    url: '/static/js/manifest.f36ca39047bebbb4d9f0.js',
-    revision: '2ttfh2k455fsvhj5ddaff',
-  }, 
+  // {
+  //   url: '/static/js/main.f36ca39047bebbb4d9f0.js',
+  //   revision: '2ttfh2k4uyxzjerersdweef',
+  // },
+  // {
+  //   url: '/static/js/manifest.f36ca39047bebbb4d9f0.js',
+  //   revision: '2ttfh2k455fsvhj5ddaff',
+  // }, 
   {
     url: '/static/asset/plugin/font-awesome/css/font-awesome.min.css',
     revision: 'iyu25ywe6ddsdf22ed',

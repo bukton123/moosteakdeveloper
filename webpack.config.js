@@ -1,11 +1,9 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const path = require('path')
-const rmdir = require('rmdir');
 
 const NODE_ENV = process.env.NODE_ENV.trim() === 'production' ? true : false
 const build = NODE_ENV ? require('./config/webpack/prod') : require('./config/webpack/dev')
-rmdir('./dist')
 
 module.exports = merge( build , {
   entry: [
@@ -24,7 +22,6 @@ module.exports = merge( build , {
         test: /\.js?$/,
         exclude: /node_modules/,
         use: [
-          'react-hot-loader/webpack',
           'babel-loader'
         ]
       },
@@ -54,11 +51,11 @@ module.exports = merge( build , {
     publicPath: '/',
     // filename: path.join('static', 'js/[name].js'),
     filename: path.join('static', 'js/[name].[hash].js'),
-    // chunkFilename: path.join('static', 'js/[id].[hash].js')
+    chunkFilename: path.join('static', 'js/[id].[hash].js')
   },
   devServer: {
-    hot: true,
-    inline: false,
-    historyApiFallback: true,
+    // hot: true,
+    // inline: false,
+    // historyApiFallback: true,
   }
 })

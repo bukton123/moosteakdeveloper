@@ -2,9 +2,11 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
+const rmdir = require('rmdir');
+rmdir('./dist')
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -14,7 +16,8 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
-      }
+      },
+      sourceMap: true
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new HtmlWebpackPlugin({
@@ -53,8 +56,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'static', to:  'static/'},
-      { from: 'firebase-mess.js', to: 'firebase-mess.js'},
-      { from: 'firebase-noit.js', to: 'firebase-noit.js'},
+      // { from: 'firebase-mess.js', to: 'firebase-mess.js'},
+      // { from: 'firebase-noit.js', to: 'firebase-noit.js'},
       { from: 'manifest.json', to: 'manifest.json'},
       { from: 'service-worker.js', to:  'service-worker.js'},
       { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},

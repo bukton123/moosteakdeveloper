@@ -5,8 +5,8 @@ module.exports = {
   devtool: '#eval-source-map',
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server'
+    // 'webpack-dev-server/client?http://localhost:8080',
+    // 'webpack/hot/only-dev-server'
   ],
   plugins: [
     new HtmlWebpackPlugin({
@@ -18,7 +18,6 @@ module.exports = {
       },
       inject: true
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
