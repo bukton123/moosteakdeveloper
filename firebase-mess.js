@@ -3,7 +3,7 @@ importScripts('https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js');
 
 // TODO: fill in messaging sender id
 firebase.initializeApp({
-  'messagingSenderId': '85465025350'
+  'messagingSenderId': '123123123123'
 });
 
 const messaging = firebase.messaging();
