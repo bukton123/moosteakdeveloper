@@ -1,6 +1,15 @@
 importScripts('/static/js/workbox-sw.prod.v1.0.1.js')
+importScripts('https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js')
+importScripts('https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js')
+
 const workboxSW  = new WorkboxSW()
 const networkFirst = workboxSW.strategies.networkFirst()
+var config = {
+  messagingSenderId: ""
+};
+
+firebase.initializeApp(config);
+const messaging = firebase.messaging()
 
 workboxSW.router.registerRoute('/*', networkFirst)
 workboxSW.precache([
@@ -37,3 +46,20 @@ workboxSW.precache([
     revision: 'iyu25ywe6ddsdf22ed5er5wwf8wer5dfhjw',
   }
 ])
+
+messaging.setBackgroundMessageHandler((payload) => {
+  // Parses data received and sets accordingly
+  const data = JSON.parse(payload.data.notification);
+  const notificationTitle = data.title;
+  const notificationOptions = {
+    body: data.body,
+    icon: '/static/icon/128.png',
+    // actions: [
+    //   {action: 'confirmAttendance', title: '👍 Confirm attendance'},
+    //   {action: 'cancel', title: '👎 Not coming'}
+    // ],
+    // data: {confirm: data.confirm, decline: data.decline}
+  };
+
+  return self.registration.showNotification(notificationTitle, notificationOptions);
+});

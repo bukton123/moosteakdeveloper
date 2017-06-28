@@ -1,6 +1,6 @@
 // // TODO: fill in firebase config information
 var config = {
-  messagingSenderId: "85465025350"
+  messagingSenderId: ""
 };
 
 firebase.initializeApp(config);
@@ -26,4 +26,4 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err);
     });
   });
-  }
+}

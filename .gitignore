@@ -4,3 +4,7 @@ firebase-debug.log
 
 # intellij ide
 .idea
+
+yarn-error.log
+yarn.lock
+package-lock.json
