@@ -48,7 +48,6 @@ workboxSW.precache([
 ])
 
 messaging.setBackgroundMessageHandler((payload) => {
-  // Parses data received and sets accordingly
   const data = JSON.parse(payload.data.notification);
   const notificationTitle = data.title;
   const notificationOptions = {
