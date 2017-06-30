@@ -1,5 +1,8 @@
+const fs = require('fs')
+const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SWPrecacheWebpackPlugin  = require('sw-precache-webpack-plugin')
 
 module.exports = {
   devtool: '#eval-source-map',
@@ -12,10 +15,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true
-      },
       inject: true
     }),
     new webpack.DefinePlugin({

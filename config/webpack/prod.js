@@ -1,12 +1,16 @@
+const fs = require('fs')
+const path = require('path')
+const rmdir = require('rmdir')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
-const rmdir = require('rmdir');
+const SWPrecacheWebpackPlugin  = require('sw-precache-webpack-plugin')
+
 rmdir('./dist')
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  // devtool: 'cheap-module-source-map',
+  devtool: 'eval',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -36,7 +40,7 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true
       },
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -54,13 +58,21 @@ module.exports = {
       name: 'manifest',
       chunks: ['vendor']
     }),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'HiewJung',
+      filename: 'service-worker.js',
+      staticFileGlobs: ['dist/**/*.{js,html,css,json}'],
+      minify: true,
+      stripPrefix: 'dist/',
+      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+    }),
     new CopyWebpackPlugin([
       { from: 'static', to:  'static/'},
       // { from: 'firebase-mess.js', to: 'firebase-mess.js'},
       // { from: 'firebase-noit.js', to: 'firebase-noit.js'},
       { from: 'manifest.json', to: 'manifest.json'},
-      { from: 'service-worker.js', to:  'service-worker.js'},
-      { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},
+      // { from: 'service-worker.js', to:  'service-worker.js'},
+      // { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},
     ])
   ],
 }

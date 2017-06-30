@@ -5,17 +5,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Add to home screen for Safari on iOS -->
+    <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="HiewJung">
-    <link rel="apple-touch-icon" href="./assets/icons/icon-152x152.png">
-    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" href="/static/asset/images/128.png">
+    <meta name="msapplication-TileImage" content="/static/asset/images/128.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
+    <!-- Add to home screen for Android -->
     <meta name="theme-color" content="#FFFFFF">
     <link rel="manifest" href="/manifest.json">
+    <!-- Css style -->
     <link rel="icon" href="/static/asset/images/128.png">
-    <link href="https://fonts.googleapis.com/css?family=Kanit:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:300,400,500,600,700" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" href="/static/asset/plugin/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/asset/plugin/alert/sweetalert.css">
@@ -26,14 +28,37 @@
     </noscript>
     <div id="app"></div>
     <script>
+        // if ('serviceWorker' in navigator) {
+        //     window.addEventListener('load', () => {
+        //         navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+        //             console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        //         })
+        //         .catch((err) => {
+        //             console.log('ServiceWorker registration failed: ', err);
+        //         });
+        //     });
+        // }
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                })
-                .catch((err) => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+            navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
+                reg.onupdatefound = function() {
+                    var installingWorker = reg.installing;
+                    installingWorker.onstatechange = function() {
+                        switch (installingWorker.state) {
+                        case 'installed':
+                            if (navigator.serviceWorker.controller) {
+                                console.log('New or updated content is available.');
+                            } else {
+                                console.log('Content is now available offline!');
+                            }
+                            break;
+                        case 'redundant':
+                            console.error('The installing service worker became redundant.');
+                            break;
+                        }
+                    };
+                };
+            }).catch(function(e) {
+                console.error('Error during service worker registration:', e);
             });
         }
     </script>
