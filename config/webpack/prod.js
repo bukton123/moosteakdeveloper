@@ -5,6 +5,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SWPrecacheWebpackPlugin  = require('sw-precache-webpack-plugin')
+const WorkboxBuildWebpackPlugin = require('workbox-webpack-plugin')
 
 rmdir('./dist')
 
@@ -58,21 +59,30 @@ module.exports = {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'HiewJung',
-      filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,json}'],
-      minify: true,
-      stripPrefix: 'dist/',
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-    }),
+    // new SWPrecacheWebpackPlugin({
+    //   cacheId: 'HiewJung',
+    //   filename: 'service-worker.js',
+    //   staticFileGlobs: ['dist/**/*.{js,html,css,json}'],
+    //   minify: false,
+    //   stripPrefix: 'dist/',
+    //   staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      
+    //   importSripts: [
+    //     'some-known-script-path.js',
+    //     { filename: 'some-known-script-path.[hash].js' },
+    //     // 'https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js',
+    //     // 'https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js'
+    //   ]
+    // }),
     new CopyWebpackPlugin([
       { from: 'static', to:  'static/'},
-      // { from: 'firebase-mess.js', to: 'firebase-mess.js'},
-      // { from: 'firebase-noit.js', to: 'firebase-noit.js'},
       { from: 'manifest.json', to: 'manifest.json'},
-      // { from: 'service-worker.js', to:  'service-worker.js'},
-      // { from: 'node_modules/workbox-sw/build/importScripts', to:  'static/js'},
-    ])
-  ],
+    ]),
+    new WorkboxBuildWebpackPlugin({
+      //  swSrc: 'service-worker.js',
+      globDirectory: './dist/',
+      globPatterns: ['**/*.{html,js,css}'],
+      swDest: './dist/service-worker.js'
+    })
+  ]
 }
