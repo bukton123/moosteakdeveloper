@@ -1,7 +1,7 @@
 {
   "name": "HiewJung Application",
   "short_name": "Hiew Jung",
-  "start_url": "/index.html?homescreen=1",
+  "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#FFFFFF",

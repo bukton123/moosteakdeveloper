@@ -63,53 +63,57 @@ module.exports = {
       { from: 'static', to:  'static/'},
       { from: 'manifest.json', to: 'manifest.json'},
     ]),
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'HiewJung',
-      filename: 'service-worker.js',
-      navigateFallback: '/index.html',
-      mergeStaticsConfig: true,
+    // new SWPrecacheWebpackPlugin({
+    //   cacheId: 'HiewJung',
+    //   filename: 'service-worker.js',
+    //   navigateFallback: '/index.html',
+    //   mergeStaticsConfig: true,
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: '/',
+    //       handler: 'networkFirst', //cacheFirst
+    //     },
+    //     {
+    //       urlPattern: '/dashboard',
+    //       handler: 'networkFirst',
+    //     }
+    //   ],
+    //   staticFileGlobs: [
+    //     'dist/**/*.{js,html,css,json}',
+    //     'dist/static/asste/plugin/**.*',
+    //     'dist/static/asste/images/*.*',
+    //     'dist/static/asste/fonts/*.*',
+    //     'dist/static/icon/*.*'
+    //     ],
+    //   minify: true,
+    //   stripPrefix: 'dist/',
+    //   staticFileGlobsIgnorePatterns: [
+    //     /\.map$/,
+    //     /asset-manifest\.json$/,
+    //     /\less$/,
+    //     /\scss$/
+    //   ],
+    // }),
+    new WorkboxBuildWebpackPlugin({
+      //  swSrc: 'service-worker.js',
+      globDirectory: './dist/',
+      globPatterns: [
+        '**/*.{html,json,css,png,ttf,woff,woff2,jpg,js,eot,svg,otf}',
+        // './dist/static/asste/fonts/*.*',
+        // 'dist/static/asste/images/*.png',
+        // 'dist/static/icon/*'
+      ],
       runtimeCaching: [
         {
-          urlPattern: '/',
-          handler: 'networkFirst', //cacheFirst
+          urlPattern: "/",
+          handler: 'networkFirst',
         },
         {
           urlPattern: '/dashboard',
           handler: 'networkFirst',
         }
       ],
-      staticFileGlobs: [
-        'dist/**/*.{js,html,css,json}',
-        'dist/static/asste/plugin/**.*',
-        'dist/static/asste/images/*.*',
-        'dist/static/asste/fonts/*.*',
-        'dist/static/icon/*.*'
-        ],
-      minify: true,
-      stripPrefix: 'dist/',
-      staticFileGlobsIgnorePatterns: [
-        /\.map$/,
-        /asset-manifest\.json$/,
-        /\less$/,
-        /\scss$/
-      ],
-    }),
-    // new WorkboxBuildWebpackPlugin({
-    //   //  swSrc: 'service-worker.js',
-    //   globDirectory: './dist/',
-    //   globPatterns: [
-    //     '**/*.{html,json,css,png,ttf,woff,woff2,jpg,js,eot,svg,otf}',
-    //     // './dist/static/asste/fonts/*.*',
-    //     // 'dist/static/asste/images/*.png',
-    //     // 'dist/static/icon/*'
-    //   ],
-    //   runtimeCaching: [
-    //     {
-    //       urlPattern: "/",
-    //       handler: 'networkFirst',
-    //     }
-    //   ],
-    //   swDest: './dist/service-worker.js'
-    // })
+      swDest: './dist/service-worker.js'
+    })
   ]
 }
