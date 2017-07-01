@@ -30,10 +30,6 @@ messaging.setBackgroundMessageHandler((payload) => {
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
-  self.registration.getNotifications().then(function(notifications) {
-    console.log(notifications)
-  })
-
   var title = 'Yay a message. sss';
   var body = 'We have received a push message.';
   var icon = '/static/icon/128.png';

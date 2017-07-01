@@ -10,8 +10,8 @@ const WorkboxBuildWebpackPlugin = require('workbox-webpack-plugin')
 rmdir('./dist')
 
 module.exports = {
-  // devtool: 'cheap-module-source-map',
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
+  // devtool: 'eval',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -72,6 +72,10 @@ module.exports = {
         {
           urlPattern: '/',
           handler: 'networkFirst', //cacheFirst
+        },
+        {
+          urlPattern: '/dashboard',
+          handler: 'networkFirst',
         }
       ],
       staticFileGlobs: [
@@ -81,7 +85,7 @@ module.exports = {
         'dist/static/asste/fonts/*.*',
         'dist/static/icon/*.*'
         ],
-      minify: false,
+      minify: true,
       stripPrefix: 'dist/',
       staticFileGlobsIgnorePatterns: [
         /\.map$/,

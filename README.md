@@ -1,4 +1,4 @@
-# Moo Steak Developer
+# Moo Steak Developer Team.
 PWA Online hackathon 2017 THAILAND
 
 (DEMO) link: https://moosteakdeveloper.firebaseapp.com
@@ -15,6 +15,18 @@ npm start or yarn start
 # build for production with minification
 npm run build
 
+```
+
+## config firebase
+
+``` bash
+# path : ./config/firebase.js
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
 ```
 
 license: MIT

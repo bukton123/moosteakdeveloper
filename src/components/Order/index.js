@@ -31,6 +31,15 @@ class Order extends Component {
         text: "รับรายการสั่งซื้อเรียบร้อยเเล้ว",
         type: "success",
       })
+      setTimeout(() => {
+        new Notification(
+          "HiewJung",
+          {
+            "body":"รับรายการสั่งซื้อเรียบร้อยเเล้ว",
+            "icon":"/static/icon/128.png"
+          }
+        )
+      }, 3000)
       this.setState({
         count: 0,
         order: []

@@ -1,3 +1,26 @@
+const checkPushmessage = () => {
+  if (!('PushManager' in window)) {
+    console.log("Push isn't supported on this browser, disable or hide UI.")
+    return false;
+  }
+
+  return true
+}
+
+const permission = () => {
+  if (Notification.permission == "granted") {
+    console.log('permission success !')
+  } else {
+    Notification.requestPermission(permission => {
+      if (permission == "granted") {
+        console.log('permission request success !')
+      } else {
+        console.log('permission fail !')
+      }
+    })
+  }
+}
+
 const unsubscribe = () => {
   navigator.serviceWorker.ready.then(r => {
     r.pushManager.getSubscription()
@@ -14,6 +37,7 @@ const unsubscribe = () => {
       })
   })
 } 
+
 const subscribe = () => {
   navigator.serviceWorker.ready.then(r => {
     r.pushManager.subscribe(({userVisibleOnly: true}))
@@ -32,5 +56,7 @@ const subscribe = () => {
 
 export default {
   subscribe,
-  unsubscribe
+  unsubscribe,
+  permission,
+  checkPushmessage
 }

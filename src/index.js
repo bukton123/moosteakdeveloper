@@ -6,19 +6,19 @@ import accountAction from './actions/accountAction'
 import firebase from 'firebase'
 import firebaseConfig  from '../config/firebase'
 firebase.initializeApp(firebaseConfig)
-
-
 let messaging = firebase.messaging()
+
 navigator.serviceWorker.ready.then(function(registration) {
   console.log('Service Worker Ready')
   messaging.useServiceWorker(registration)
-  registration.pushManager.subscribe() 
 })
+
 messaging.requestPermission()
 messaging.getToken().then((token) => {
   console.log(token)
   localStorage.setItem('noti',token)
 })
+
 messaging.onTokenRefresh(function() {
   messaging.getToken()
   .then(function(refreshedToken) {
@@ -32,17 +32,6 @@ messaging.onTokenRefresh(function() {
 
 // messaging.onMessage(function(payload) {
 //   console.log("Message received. ", payload);
-
-//   // var notificationOptions = {
-//   //   body: "ghgfhfgh",
-//   //   icon:  'images/touch/chrome-touch-icon-192x192.png',
-//   //   tag: 'simple-push-demo-notification',
-//   // };
-//   // navigator.serviceWorker.ready.then(function(registration) {
-//   //   return registration.showNotification("title", notificationOptions);
-
-//   // })
-
 // });
 
 accountAction.registerOauthEvent()
