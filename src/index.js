@@ -12,12 +12,38 @@ let messaging = firebase.messaging()
 navigator.serviceWorker.ready.then(function(registration) {
   console.log('Service Worker Ready')
   messaging.useServiceWorker(registration)
+  registration.pushManager.subscribe() 
 })
 messaging.requestPermission()
 messaging.getToken().then((token) => {
   console.log(token)
   localStorage.setItem('noti',token)
 })
+messaging.onTokenRefresh(function() {
+  messaging.getToken()
+  .then(function(refreshedToken) {
+    console.log('Token refreshed.');
+    localStorage.setItem('noti',refreshedToken)
+  })
+  .catch(function(err) {
+    console.log('Unable to retrieve refreshed token ', err);
+  });
+});
+
+// messaging.onMessage(function(payload) {
+//   console.log("Message received. ", payload);
+
+//   // var notificationOptions = {
+//   //   body: "ghgfhfgh",
+//   //   icon:  'images/touch/chrome-touch-icon-192x192.png',
+//   //   tag: 'simple-push-demo-notification',
+//   // };
+//   // navigator.serviceWorker.ready.then(function(registration) {
+//   //   return registration.showNotification("title", notificationOptions);
+
+//   // })
+
+// });
 
 accountAction.registerOauthEvent()
 accountAction.setTokenNoti()

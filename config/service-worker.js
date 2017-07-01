@@ -4,12 +4,6 @@ importScripts('https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js')
 
 const workboxSW  = new WorkboxSW()
 const networkFirst = workboxSW.strategies.networkFirst()
-var config = {
-  messagingSenderId: "85465025350"
-};
-
-firebase.initializeApp(config);
-const messaging = firebase.messaging()
 
 workboxSW.router.registerRoute('/*', networkFirst)
 workboxSW.precache([
@@ -29,23 +23,48 @@ workboxSW.precache([
   //   url: '/static/js/manifest.f36ca39047bebbb4d9f0.js',
   //   revision: '2ttfh2k455fsvhj5ddaff',
   // }, 
-  {
-    url: '/static/asset/plugin/font-awesome/css/font-awesome.min.css',
-    revision: 'iyu25ywe6ddsdf22ed',
-  }, 
-  {
-    url: '/static/asset/images/384.png',
-    revision: 'iyu25ywe6ddf66jowwxc5dsdf22ed',
-  }, 
-  {
-    url: '/static/asset/images/HiewKao-logo-w-128.png',
-    revision: 'iyu25ywe6ddsdf22ed5er5wwf8wer5dfhjw',
-  }, 
-  {
-    url: '/static/asset/images/bg.jpg',
-    revision: 'iyu25ywe6ddsdf22ed5er5wwf8wer5dfhjw',
-  }
 ])
+
+
+workboxSW.generateSW({
+    cacheId: 'mu',
+    swDest: './sw/sw.js',
+    handleFetch: true,
+    directoryIndex: 'index.php',
+    globDirectory: '../../',
+    globPatterns: [
+      path.join(tmplDir, 'images/icons.svg'),
+      path.join('offline.html')
+    ],
+    runtimeCaching: [{
+      urlPattern: prod ?
+        /https:\/\/manutd.one\/(\S{1,400}.html|match_overview\/|news\/)/:
+        /http:\/\/localhost\/(\S{1,400}.html|match_overview\/|news\/)/,
+      handler: 'cacheFirst',
+      options: {
+        cacheName: 'pages',
+        cacheExpiration: {
+          maxEntries: 100,
+          maxAgeSeconds: 72 * 60 * 60
+        },
+        cacheableResponse: {statuses: [200]}
+      }
+    }],
+    navigateFallback: '/offline.html',
+    verbose: true
+  })
+
+
+var config = {
+  messagingSenderId: ""
+};
+
+firebase.initializeApp(config);
+const messaging = firebase.messaging()
+
+self.addEventListener('install', (e) => {
+    console.log('Service worker installed');
+  });
 
 messaging.setBackgroundMessageHandler((payload) => {
   const data = JSON.parse(payload.data.notification);
@@ -62,3 +81,42 @@ messaging.setBackgroundMessageHandler((payload) => {
 
   return self.registration.showNotification(notificationTitle, notificationOptions);
 });
+
+
+self.addEventListener('push', function(event) {
+  console.log('Received a push message', event);
+
+  self.registration.getNotifications().then(function(notifications) {
+    console.log(notifications)
+  })
+
+  var title = 'Yay a message. sss';
+  var body = 'We have received a push message.';
+  var icon = '/static/icon/128.png';
+  var tag = 'simple-push-demo-notification-tag';
+  var data = {
+    doge: {
+        wow: 'such amaze notification data'
+    }
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body: body,
+      icon: icon,
+      tag: tag,
+      data: data
+    })
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  // Event actions derived from event.notification.data from data received
+  var eventURL = event.notification.data;
+  event.notification.close();
+  if (event.action === 'confirmAttendance') {
+    clients.openWindow(eventURL.confirm);
+  } else {
+    clients.openWindow(eventURL.decline);
+  }
+}, false);
