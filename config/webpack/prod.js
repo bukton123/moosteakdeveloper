@@ -59,30 +59,53 @@ module.exports = {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    // new SWPrecacheWebpackPlugin({
-    //   cacheId: 'HiewJung',
-    //   filename: 'service-worker.js',
-    //   staticFileGlobs: ['dist/**/*.{js,html,css,json}'],
-    //   minify: false,
-    //   stripPrefix: 'dist/',
-    //   staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-      
-    //   importSripts: [
-    //     'some-known-script-path.js',
-    //     { filename: 'some-known-script-path.[hash].js' },
-    //     // 'https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js',
-    //     // 'https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js'
-    //   ]
-    // }),
     new CopyWebpackPlugin([
       { from: 'static', to:  'static/'},
       { from: 'manifest.json', to: 'manifest.json'},
     ]),
-    new WorkboxBuildWebpackPlugin({
-      //  swSrc: 'service-worker.js',
-      globDirectory: './dist/',
-      globPatterns: ['**/*.{html,js,css}'],
-      swDest: './dist/service-worker.js'
-    })
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'HiewJung',
+      filename: 'service-worker.js',
+      navigateFallback: '/index.html',
+      mergeStaticsConfig: true,
+      runtimeCaching: [
+        {
+          urlPattern: '/',
+          handler: 'networkFirst', //cacheFirst
+        }
+      ],
+      staticFileGlobs: [
+        'dist/**/*.{js,html,css,json}',
+        'dist/static/asste/plugin/**.*',
+        'dist/static/asste/images/*.*',
+        'dist/static/asste/fonts/*.*',
+        'dist/static/icon/*.*'
+        ],
+      minify: false,
+      stripPrefix: 'dist/',
+      staticFileGlobsIgnorePatterns: [
+        /\.map$/,
+        /asset-manifest\.json$/,
+        /\less$/,
+        /\scss$/
+      ],
+    }),
+    // new WorkboxBuildWebpackPlugin({
+    //   //  swSrc: 'service-worker.js',
+    //   globDirectory: './dist/',
+    //   globPatterns: [
+    //     '**/*.{html,json,css,png,ttf,woff,woff2,jpg,js,eot,svg,otf}',
+    //     // './dist/static/asste/fonts/*.*',
+    //     // 'dist/static/asste/images/*.png',
+    //     // 'dist/static/icon/*'
+    //   ],
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: "/",
+    //       handler: 'networkFirst',
+    //     }
+    //   ],
+    //   swDest: './dist/service-worker.js'
+    // })
   ]
 }
