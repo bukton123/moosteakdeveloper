@@ -3,6 +3,8 @@ PWA Online hackathon 2017 THAILAND
 
 (DEMO) link: https://moosteakdeveloper.firebaseapp.com
 
+license: MIT
+
 ## Build Setup
 
 ``` bash
@@ -17,7 +19,7 @@ npm run build
 
 ```
 
-## config firebase
+## Config Firebase
 
 ``` bash
 # path : ./config/firebase.js
@@ -28,5 +30,3 @@ npm run build
   storageBucket: "",
   messagingSenderId: ""
 ```
-
-license: MIT
